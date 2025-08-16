@@ -33,11 +33,14 @@ import {
   Phone,
   MapPin
 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const CuracoreLanding = () => {
   const [activeView, setActiveView] = useState('chart');
   const [isVisible, setIsVisible] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     setIsVisible(true);
@@ -140,12 +143,16 @@ const CuracoreLanding = () => {
                 )}
               </button>
               
-              <button className={`px-4 py-2 ${textSecondary} hover:${textPrimary} transition-colors duration-300 flex items-center gap-2`}>
+              <button 
+              onClick={() => router.push('/login')}
+              className={`px-4 py-2 ${textSecondary} hover:${textPrimary} transition-colors duration-300 flex items-center gap-2`}>
                 <LogIn className="w-4 h-4" />
                 Login
               </button>
               
-              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
+              <button 
+              onClick={() => router.push('/register')}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
                 <UserPlus className="w-4 h-4" />
                 Sign Up
               </button>
