@@ -16,14 +16,14 @@ export default function LoginPage() {
   const router = useRouter();
 
   // Check for existing token on component mount
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      router.push('/app');
-    }
-  }
+//   if (typeof window !== 'undefined') {
+//     const token = localStorage.getItem('authToken');
+//     if (token) {
+//       router.push('/app');
+//     }
+//   }
 
-  const handleInputChange = () => {
+  const handleInputChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -47,7 +47,7 @@ export default function LoginPage() {
     setError('');
     
     try {
-      const response = await fetch('/api/v1/auth/login', {
+      const response = await fetch('http://localhost:5000/api/v1/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -172,7 +172,7 @@ export default function LoginPage() {
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={isLoading}
-              className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-blue-900 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
